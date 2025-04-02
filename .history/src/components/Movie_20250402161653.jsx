@@ -8,15 +8,19 @@ const Movie = ({movie}) => {
     <>
       <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="aspect-video brightness-50"/>
     <div className="absolute bottom-[10%] left-8 w-1/2 sm:w-1/3">
-      <p className="font-bold sm:text-[2vw] mb-2">{movie.title}</p>
+      <p className="font-bold sm:text-[2vw] mb-2">Inside Out 2</p>
       <div>
         <p className="text-gray-400 border border-gray-400 inline-block p-1 mb-1">PG13</p>
-        <p className="text-[1.2vw]">{movie.release_date}</p>
+        <p className="text-[1.2vw]">2024-05-11</p>
       </div>
       <div>
       <div className="hidden sm:block text-[1.2vw] mt-4">
         <p className="font-bold mb-2">Overview</p>
-        <p>{movie.overview}</p>
+        <p>Teenager Riley&apos;s mind headquarters is undergoing a sudden
+          demolition to make room for something entirely unexpected: new
+          Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been
+          running a successful operation by all accounts, aren’t sure how to
+          feel when Anxiety shows up. And it looks like she’s not alone.</p>
       </div>
       </div>
       <div className="mt-4">

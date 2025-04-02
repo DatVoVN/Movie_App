@@ -11,12 +11,16 @@ const Movie = ({movie}) => {
       <p className="font-bold sm:text-[2vw] mb-2">{movie.title}</p>
       <div>
         <p className="text-gray-400 border border-gray-400 inline-block p-1 mb-1">PG13</p>
-        <p className="text-[1.2vw]">{movie.release_date}</p>
+        <p className="text-[1.2vw]">{movie.releaseDate}</p>
       </div>
       <div>
       <div className="hidden sm:block text-[1.2vw] mt-4">
         <p className="font-bold mb-2">Overview</p>
-        <p>{movie.overview}</p>
+        <p>Teenager Riley&apos;s mind headquarters is undergoing a sudden
+          demolition to make room for something entirely unexpected: new
+          Emotions! Joy, Sadness, Anger, Fear and Disgust, who’ve long been
+          running a successful operation by all accounts, aren’t sure how to
+          feel when Anxiety shows up. And it looks like she’s not alone.</p>
       </div>
       </div>
       <div className="mt-4">

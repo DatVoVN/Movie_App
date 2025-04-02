@@ -8,7 +8,7 @@ const FeatureMovie = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeMovieId, setActiveMovieId] = useState(null)
+  const [activeMovieId, setActiveMovieId] = useState()
   useEffect(() => {
     const controller = new AbortController(); // Tạo AbortController để hủy request nếu cần
     const fetchMovies = async () => {
@@ -51,7 +51,8 @@ const FeatureMovie = () => {
   return (
     <div className="relative text-white">
     {movies.filter(movie=>(movie.id===activeMovieId)).map((movie)=>(<Movie key={movie.id} movie={movie}/>))}
-      <PaginateIndicator movies={movies} activeMovieId={activeMovieId} setActiveMovieId={setActiveMovieId} />
+
+      <PaginateIndicator />
     </div>
   );
 };

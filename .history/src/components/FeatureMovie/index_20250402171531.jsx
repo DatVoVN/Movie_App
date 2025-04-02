@@ -8,7 +8,7 @@ const FeatureMovie = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeMovieId, setActiveMovieId] = useState(null)
+
   useEffect(() => {
     const controller = new AbortController(); // Tạo AbortController để hủy request nếu cần
     const fetchMovies = async () => {
@@ -29,7 +29,6 @@ const FeatureMovie = () => {
         const data = await response.json();
         const popularMovies = data.results.slice(0, 4);
         setMovies(popularMovies);
-        setActiveMovieId(popularMovies[0].id)
       } catch (error) {
         if (error.name !== "AbortError") {
           setError(error.message);
@@ -50,8 +49,11 @@ const FeatureMovie = () => {
 
   return (
     <div className="relative text-white">
-    {movies.filter(movie=>(movie.id===activeMovieId)).map((movie)=>(<Movie key={movie.id} movie={movie}/>))}
-      <PaginateIndicator movies={movies} activeMovieId={activeMovieId} setActiveMovieId={setActiveMovieId} />
+    {movies.map((movie)=>{
+      <Movie key={movie.id} movie={movie}/>
+    })}
+
+      <PaginateIndicator />
     </div>
   );
 };

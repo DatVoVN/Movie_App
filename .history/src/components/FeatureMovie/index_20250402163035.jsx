@@ -8,7 +8,7 @@ const FeatureMovie = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeMovieId, setActiveMovieId] = useState(null)
+
   useEffect(() => {
     const controller = new AbortController(); // Tạo AbortController để hủy request nếu cần
     const fetchMovies = async () => {
@@ -19,7 +19,7 @@ const FeatureMovie = () => {
             accept: "application/json",
             Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhODRkZDcwNWVjZWU3N2EzYmFmMWE5OTYwMGUyN2MwNCIsIm5iZiI6MTcyMTcxMDQyOC4zMjgsInN1YiI6IjY2OWYzNzVjNTI0M2RhODhhNzUwNGE1ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nolvMGzTv0LYOa24_n9GfZjcgogpyVNNIlXiHhX1MpY",
           },
-          signal: controller.signal,
+          signal: controller.signal, // Liên kết với AbortController
         });
 
         if (!response.ok) {
@@ -29,7 +29,6 @@ const FeatureMovie = () => {
         const data = await response.json();
         const popularMovies = data.results.slice(0, 4);
         setMovies(popularMovies);
-        setActiveMovieId(popularMovies[0].id)
       } catch (error) {
         if (error.name !== "AbortError") {
           setError(error.message);
@@ -41,17 +40,16 @@ const FeatureMovie = () => {
 
     fetchMovies();
 
-    return () => controller.abort();
+    return () => controller.abort(); // Cleanup request nếu component bị unmount
   }, []);
 
   if (loading) return <div>Đang tải...</div>;
   if (error) return <div>Lỗi: {error}</div>;
-  console.log(movies);
 
   return (
     <div className="relative text-white">
-    {movies.filter(movie=>(movie.id===activeMovieId)).map((movie)=>(<Movie key={movie.id} movie={movie}/>))}
-      <PaginateIndicator movies={movies} activeMovieId={activeMovieId} setActiveMovieId={setActiveMovieId} />
+      {movies.length > 0 ? <Movie movie={movies[0]} /> : <div>Không có phim nào</div>}
+      <PaginateIndicator />
     </div>
   );
 };

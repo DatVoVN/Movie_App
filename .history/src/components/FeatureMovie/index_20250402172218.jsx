@@ -51,7 +51,8 @@ const FeatureMovie = () => {
   return (
     <div className="relative text-white">
     {movies.filter(movie=>(movie.id===activeMovieId)).map((movie)=>(<Movie key={movie.id} movie={movie}/>))}
-      <PaginateIndicator movies={movies} activeMovieId={activeMovieId} setActiveMovieId={setActiveMovieId} />
+
+      <PaginateIndicator />
     </div>
   );
 };

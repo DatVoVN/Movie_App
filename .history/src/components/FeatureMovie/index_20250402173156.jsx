@@ -8,7 +8,7 @@ const FeatureMovie = () => {
   const [movies, setMovies] = useState([]);
   const [activeMovieId, setActiveMovieId] = useState(null)
   useEffect(() => {
-    const controller = new AbortController();
+    const controller = new AbortController(); // Tạo AbortController để hủy request nếu cần
     const fetchMovies = async () => {
       try {
         const response = await fetch("https://api.themoviedb.org/3/movie/popular", {

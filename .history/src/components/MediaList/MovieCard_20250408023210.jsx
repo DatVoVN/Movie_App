@@ -1,7 +1,9 @@
 import React from 'react'
-import CircularProgessBar from '../CircularProgessBar'
+import CircularProgessBar from './CircularProgessBar'
 
 const MovieCard = ({movie, activeTabId}) => {
+  console.log(movie);
+
   return (
     <div className='border border-slate-800 rounded-lg relative'>
     {

@@ -1,5 +1,5 @@
 import React from 'react'
-import CircularProgessBar from '../CircularProgessBar'
+import CircularProgessBar from './CircularProgessBar'
 
 const MovieCard = ({movie, activeTabId}) => {
   return (
